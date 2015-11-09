@@ -73,6 +73,8 @@
     <Compile Include="Communications\BlobService\BlobOperations\PutBlobResponse.cs" />
     <Compile Include="Communications\BlobService\BlobRange.cs" />
     <Compile Include="Communications\BlobService\BlobServiceConstants.cs" />
+    <Compile Include="Communications\BlobService\BlobSharedAccessSignature.cs" />
+    <Compile Include="Communications\BlobService\BlobSignedResourceType.cs" />
     <Compile Include="Communications\BlobService\BlockListBlockId.cs" />
     <Compile Include="Communications\BlobService\BlockListBlockIdList.cs" />
     <Compile Include="Communications\BlobService\BlockListListType.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="Communications\BlobService\ContainerOperations\GetContainerPropertiesResponse.cs" />
     <Compile Include="Communications\BlobService\ContainerOperations\CreateContainerResponse.cs" />
     <Compile Include="Communications\BlobService\BlobCopyProgress.cs" />
+    <Compile Include="Communications\Common\BaseSharedAccessSignature.cs" />
     <Compile Include="Communications\Common\BlobAccessPolicy.cs" />
     <Compile Include="Communications\Common\BlobType.cs" />
     <Compile Include="Communications\Common\CopyStatus.cs" />
@@ -116,10 +119,12 @@
     <Compile Include="Communications\Common\QueueSharedAccessPermissions.cs" />
     <Compile Include="Communications\Common\BlobSignedIdentifier.cs" />
     <Compile Include="Communications\Common\QueueSignedIdentifier.cs" />
+    <Compile Include="Communications\Common\RestProtocolVersionsMapping.cs" />
     <Compile Include="Communications\Common\StorageAnalyticsVersionNumber.cs" />
     <Compile Include="Communications\Common\StorageServiceLoggingProperties.cs" />
     <Compile Include="Communications\Common\StorageServiceMetricsProperties.cs" />
     <Compile Include="Communications\Common\StorageServiceProperties.cs" />
+    <Compile Include="Communications\Common\RestProtocolVersions.cs" />
     <Compile Include="Communications\Core\AuthenticationMethod.cs" />
     <Compile Include="Communications\Core\ExceptionRetryStrategy.cs" />
     <Compile Include="Communications\Core\Interfaces\IReceiveAdditionalHeadersWithResponse.cs" />
@@ -127,6 +132,7 @@
     <Compile Include="Communications\Core\Interfaces\ISendAdditionalOptionalHeaders.cs" />
     <Compile Include="Communications\Core\Interfaces\ISendAdditionalRequiredHeaders.cs" />
     <Compile Include="Communications\Core\Interfaces\ISendDataWithRequest.cs" />
+    <Compile Include="Communications\Core\Interfaces\ISharedAccessSignature.cs" />
     <Compile Include="Communications\Core\ProtocolConstants.cs" />
     <Compile Include="Communications\Core\RetriedException.cs" />
     <Compile Include="Communications\Core\SignedAuthorization.cs" />

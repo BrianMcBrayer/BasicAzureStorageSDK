@@ -8,13 +8,14 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Basic.Azure.Storage.Communications.Common;
 
 namespace Basic.Azure.Storage.Communications.Core
 {
     public abstract class RequestBase<TPayload>
         where TPayload : IResponsePayload, new()
     {
-        public const string TargetStorageVersion = "2012-02-12";
+        public readonly string TargetStorageVersion = RestProtocolVersionsMapping.Map[RestProtocolVersions._2012_02_12];
 
         private readonly StorageAccountSettings _settings;
 

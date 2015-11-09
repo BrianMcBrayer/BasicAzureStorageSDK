@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Basic.Azure.Storage.Communications.Common
 {
@@ -13,6 +9,7 @@ namespace Basic.Azure.Storage.Communications.Common
         Read = 1,
         Write = 2,
         Delete = 4,
-        List = 8
+        List = 8,
+        Create = 16
     }
 }
