@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -120,6 +121,8 @@
     <Compile Include="Communications\Common\BlobSignedIdentifier.cs" />
     <Compile Include="Communications\Common\QueueSignedIdentifier.cs" />
     <Compile Include="Communications\Common\RestProtocolVersionsMapping.cs" />
+    <Compile Include="Communications\Common\SharedAccessSignatureFieldName.cs" />
+    <Compile Include="Communications\Common\SharedAccessSignatureFieldNameParameterMapping.cs" />
     <Compile Include="Communications\Common\StorageAnalyticsVersionNumber.cs" />
     <Compile Include="Communications\Common\StorageServiceLoggingProperties.cs" />
     <Compile Include="Communications\Common\StorageServiceMetricsProperties.cs" />

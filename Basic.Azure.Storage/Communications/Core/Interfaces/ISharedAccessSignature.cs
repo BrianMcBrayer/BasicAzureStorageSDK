@@ -13,5 +13,11 @@ namespace Basic.Azure.Storage.Communications.Core.Interfaces
         int SignedPermissions { get; }
 
         string SignedIdentifier { get; }
+
+        string GenerateSignature(StorageAccountSettings settings);
+
+        string GenerateStringToSign(StorageAccountSettings settings);
+
+        string GenerateSharedAccessSignatureString(StorageAccountSettings settings);
     }
 }

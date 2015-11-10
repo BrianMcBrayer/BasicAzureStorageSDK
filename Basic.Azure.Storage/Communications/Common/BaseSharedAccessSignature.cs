@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web;
 using Basic.Azure.Storage.Communications.Core.Interfaces;
 
 namespace Basic.Azure.Storage.Communications.Common
 {
-    public class BaseSharedAccessSignature : ISharedAccessSignature
+    public abstract class BaseSharedAccessSignature : ISharedAccessSignature
     {
         public const RestProtocolVersions ImplementedRestProtocolVersion = RestProtocolVersions._2012_02_12;
 
@@ -15,9 +21,32 @@ namespace Basic.Azure.Storage.Communications.Common
         public int SignedPermissions { get; protected set; }
         public string SignedIdentifier { get; protected set; }
 
+        public string GenerateSignature(StorageAccountSettings settings)
+        {
+            var signature = settings.ComputeMacSha256(GenerateStringToSign(settings));
+
+            Console.WriteLine("sig is {0}", signature);
+            Console.WriteLine("encoded sig is {0}", HttpUtility.UrlEncode(signature));
+
+            return signature;
+        }
+
+        public abstract string GenerateStringToSign(StorageAccountSettings settings);
+
+        public string GenerateSharedAccessSignatureString(StorageAccountSettings settings)
+        {
+            const string urlQueryPairFormat = "{0}={1}";
+
+            var parts = string.Join("&", GenerateSharedAccessSignatureQueryParts(settings)
+                .Where(pair => !string.IsNullOrWhiteSpace(pair.Value))
+                .Select(pair => string.Format(urlQueryPairFormat, pair.Key, HttpUtility.UrlEncode(pair.Value))));
+
+            return parts;
+        }
+
         #endregion
 
-        public BaseSharedAccessSignature(RestProtocolVersions signedVersion, DateTime? signedStart, DateTime? signedExpiry, string signedIdentifier)
+        protected BaseSharedAccessSignature(RestProtocolVersions signedVersion, DateTime? signedStart, DateTime? signedExpiry, string signedIdentifier)
         {
             if (signedVersion != ImplementedRestProtocolVersion)
             {
@@ -41,5 +70,14 @@ namespace Basic.Azure.Storage.Communications.Common
             SignedExpiry = signedExpiry;
             SignedIdentifier = signedIdentifier;
         }
+
+        protected string ConvertSignedNullableDate(DateTime? signedDate)
+        {
+            return signedDate.HasValue
+                ? signedDate.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssK", CultureInfo.InvariantCulture)
+                : null;
+        }
+
+        protected abstract Dictionary<string, string> GenerateSharedAccessSignatureQueryParts(StorageAccountSettings settings);
     }
 }

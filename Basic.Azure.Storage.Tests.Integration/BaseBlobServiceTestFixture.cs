@@ -35,7 +35,7 @@ namespace Basic.Azure.Storage.Tests.Integration
             }
         }
 
-        private CloudStorageAccount StorageAccount
+        protected CloudStorageAccount StorageAccount
         {
             get
             {
